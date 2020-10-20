@@ -30,15 +30,23 @@ const Gameboard = (arg) => {
     //const checkIfPositionValid = ()
     let missedAttacks = 0;
     const receiveAttack = (x,y) => {
+        if (board[x][y] === "X" || board[x][y] === true) {
+            return false;
+        }
         if (board[x][y] == null) {
             missedAttacks +=1;
+            board[x][y] = "X";
         }
         else {
+            //find out which ship and which part, use .hit
             //hit ship
+            board[x][y] = true;
         }
     }
+    const getBoard = () => board
     const getShips = () => ships
-    const getMissedAttacks = () => missedAttacks
-    return {getMissedAttacks, receiveAttack, fillBoard, getShips}
+    const getMissedAttacks = () => missedAttacks    
+    const allShipsSunk = () => ships.every(ship => ship.isSunk())
+    return {getMissedAttacks, receiveAttack, fillBoard, getShips, getBoard, allShipsSunk}
 }
 export {example, Gameboard}

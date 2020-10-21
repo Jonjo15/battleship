@@ -20,3 +20,15 @@ test("turn is set to true", () => {
     player.setTurn(true)
     expect(player.getTurn()).toBe(true)
 })
+test("ai get coordinates works(1)", () => {
+    let player = Player("a", true)
+    let coords = player.getRandomCoords()
+    expect(coords[0]).toBeLessThan(10)
+    expect(coords[1]).toBeLessThan(10)
+})
+test("ai get coordinates works(2)", () => {
+    let player = Player("a", true)
+    let coords = player.getRandomCoords()
+    expect(coords[0]).toBeGreaterThan(-1)
+    expect(coords[1]).toBeGreaterThan(-1)
+})

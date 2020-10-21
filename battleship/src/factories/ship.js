@@ -1,7 +1,7 @@
 function example() {
     return false;
 }
-const Ship = (length) => {
+const Ship = (length, id) => {
     let nonHitPositions = length
     // eslint-disable-next-line no-array-constructor
    let hitArray = new Array(length).fill(false)
@@ -17,6 +17,7 @@ const Ship = (length) => {
         }
         return false
     }
-    return {getLength, hit, isSunk}
+    const getId = () => id;
+    return {getLength, hit, isSunk, getId}
 }
 export {example, Ship}
